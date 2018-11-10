@@ -15,5 +15,12 @@ defmodule PeopleWeb.Router do
 
   scope "/", PeopleWeb do
     pipe_through :browser
+
+    get "/", UserController, :index
+    get "/:id", UserController, :show
+    get "/create", UserController, :new
+    post "/create", UserController, :create
+    get "/edit/:id", UserController, :edit
+    post "/edit/:id", UserController, :update
   end
 end
