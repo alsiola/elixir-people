@@ -6,9 +6,19 @@ defmodule People.UsersTest do
   describe "user" do
     alias People.Users.User
 
-    @valid_attrs %{location: "some location", name: "some name", photo: "some photo", role: "some role"}
-    @update_attrs %{location: "some updated location", name: "some updated name", photo: "some updated photo", role: "some updated role"}
-    @invalid_attrs %{location: nil, name: nil, photo: nil, role: nil}
+    @valid_attrs %{
+      location: "some location",
+      name: "some name",
+      photo: "some photo",
+      title: "some title"
+    }
+    @update_attrs %{
+      location: "some updated location",
+      name: "some updated name",
+      photo: "some updated photo",
+      title: "some updated title"
+    }
+    @invalid_attrs %{location: nil, name: nil, photo: nil, title: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -34,7 +44,7 @@ defmodule People.UsersTest do
       assert user.location == "some location"
       assert user.name == "some name"
       assert user.photo == "some photo"
-      assert user.role == "some role"
+      assert user.title == "some title"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -47,7 +57,7 @@ defmodule People.UsersTest do
       assert user.location == "some updated location"
       assert user.name == "some updated name"
       assert user.photo == "some updated photo"
-      assert user.role == "some updated role"
+      assert user.title == "some updated title"
     end
 
     test "update_user/2 with invalid data returns error changeset" do

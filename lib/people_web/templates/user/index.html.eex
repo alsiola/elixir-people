@@ -5,7 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
-      <th>Role</th>
+      <th>Title</th>
       <th>Photo</th>
 
       <th></th>
@@ -16,7 +16,7 @@
     <tr>
       <td><%= user.name %></td>
       <td><%= user.location %></td>
-      <td><%= user.role %></td>
+      <td><%= user.title %></td>
       <td><%= user.photo %></td>
 
       <td>

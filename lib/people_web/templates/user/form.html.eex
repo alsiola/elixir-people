@@ -13,9 +13,9 @@
   <%= text_input f, :location %>
   <%= error_tag f, :location %>
 
-  <%= label f, :role %>
-  <%= text_input f, :role %>
-  <%= error_tag f, :role %>
+  <%= label f, :title %>
+  <%= text_input f, :title %>
+  <%= error_tag f, :title %>
 
   <%= label f, :photo %>
   <%= text_input f, :photo %>
