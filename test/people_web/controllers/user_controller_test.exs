@@ -3,9 +3,19 @@ defmodule PeopleWeb.UserControllerTest do
 
   alias People.Users
 
-  @create_attrs %{location: "some location", name: "some name", photo: "some photo", role: "some role"}
-  @update_attrs %{location: "some updated location", name: "some updated name", photo: "some updated photo", role: "some updated role"}
-  @invalid_attrs %{location: nil, name: nil, photo: nil, role: nil}
+  @create_attrs %{
+    location: "some location",
+    name: "some name",
+    photo: "some photo",
+    title: "some title"
+  }
+  @update_attrs %{
+    location: "some updated location",
+    name: "some updated name",
+    photo: "some updated photo",
+    title: "some updated title"
+  }
+  @invalid_attrs %{location: nil, name: nil, photo: nil, title: nil}
 
   def fixture(:user) do
     {:ok, user} = Users.create_user(@create_attrs)
@@ -66,18 +76,6 @@ defmodule PeopleWeb.UserControllerTest do
     test "renders errors when data is invalid", %{conn: conn, user: user} do
       conn = put(conn, Routes.user_path(conn, :update, user), user: @invalid_attrs)
       assert html_response(conn, 200) =~ "Edit User"
-    end
-  end
-
-  describe "delete user" do
-    setup [:create_user]
-
-    test "deletes chosen user", %{conn: conn, user: user} do
-      conn = delete(conn, Routes.user_path(conn, :delete, user))
-      assert redirected_to(conn) == Routes.user_path(conn, :index)
-      assert_error_sent 404, fn ->
-        get(conn, Routes.user_path(conn, :show, user))
-      end
     end
   end
 
