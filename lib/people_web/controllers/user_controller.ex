@@ -27,8 +27,14 @@ defmodule PeopleWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Users.get_user!(id)
-    render(conn, "show.html", user: user)
+    with {validId, _} <- Integer.parse(id),
+         user
+         when not is_nil(user) <- Users.get_user(validId) do
+      render(conn, "show.html", user: user)
+    else
+      nil -> show404(conn)
+      :error -> show400(conn, "Invalid ID parameter")
+    end
   end
 
   def edit(conn, %{"id" => id}) do
@@ -49,5 +55,19 @@ defmodule PeopleWeb.UserController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
+  end
+
+  defp show404(conn) do
+    conn
+    |> put_status(:not_found)
+    |> put_view(PeopleWeb.ErrorView)
+    |> render("404.html")
+  end
+
+  defp show400(conn, msg) do
+    conn
+    |> put_status(:bad_request)
+    |> put_view(PeopleWeb.ErrorView)
+    |> render("400.html", msg: msg)
   end
 end

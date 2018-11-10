@@ -1,0 +1,3 @@
+<p>
+    Invalid request: <%= @msg %>
+</p>
