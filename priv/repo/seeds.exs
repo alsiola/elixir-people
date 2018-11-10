@@ -1,11 +1,10 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     People.Repo.insert!(%People.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+IO.gets("Enter CSV file location: ")
+|> String.trim()
+|> Path.expand()
+|> File.stream!()
+|> CSV.decode(headers: true)
+|> Enum.map(fn {:ok, user} -> user end)
+|> Enum.map(&People.Users.create_user/1)
+|> Enum.map(fn {:ok, %People.Users.User{name: name}} ->
+  IO.puts("Added user: " <> name)
+end)
