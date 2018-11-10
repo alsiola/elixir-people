@@ -36,3 +36,17 @@ Data can be seeded from any CSV file that has the headers `name`, `role`, `locat
 ```
 
 Enter the location of the CSV file (relative to the current working directory) and all users in the file will be added to the database.
+
+## Running The Application
+Once the database is started and initialised the application can be run with:
+
+```
+    mix phx.server
+```
+
+## Tests
+Tests can be run using:
+
+```
+    mix test
+```
