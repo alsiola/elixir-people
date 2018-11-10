@@ -1,31 +1,7 @@
-<h1>Listing User</h1>
+<h1>People</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Title</th>
-      <th>Photo</th>
+<span><%= link "Add a user", to: Routes.user_path(@conn, :new), class: "btn" %></span>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for user <- @user do %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.location %></td>
-      <td><%= user.title %></td>
-      <td><%= user.photo %></td>
-
-      <td>
-        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
-        <%= link "Edit", to: Routes.user_path(@conn, :edit, user) %>
-      </td>
-    </tr>
+<%= for user <- @users do %>
+    <%= render(PeopleWeb.SharedView, "user.html", user: user, conn: @conn) %>
 <% end %>
-  </tbody>
-</table>
-
-<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>

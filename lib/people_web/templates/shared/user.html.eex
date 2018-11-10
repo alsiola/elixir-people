@@ -1,0 +1,17 @@
+<div class="user-wrapper">
+    <div class="user">
+        <img src="<%= @user.photo %>" alt="<%= @user.name %>"/>
+        <div>
+            <h3><%= @user.name %></h3>
+            
+            <div class="user-links">
+                <%= if @conn.request_path === "/" do
+                    link "Details", to: Routes.user_path(@conn, :show, @user), class: "btn"
+                    else
+                    link "View All Users", to: Routes.user_path(@conn, :index), class: "btn"
+                end %>
+                <%= link "Edit", to: Routes.user_path(@conn, :edit, @user), class: "btn" %>
+            </div>
+        </div>
+    </div>
+</div>

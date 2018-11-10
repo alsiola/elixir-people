@@ -25,7 +25,7 @@ defmodule PeopleWeb.UserControllerTest do
   describe "index" do
     test "lists all user", %{conn: conn} do
       conn = get(conn, Routes.user_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing User"
+      assert html_response(conn, 200) =~ "People"
     end
   end
 
@@ -44,7 +44,7 @@ defmodule PeopleWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.user_path(conn, :show, id)
 
       conn = get(conn, Routes.user_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show User"
+      assert html_response(conn, 200) =~ "Person Details"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -70,7 +70,7 @@ defmodule PeopleWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.user_path(conn, :show, user)
 
       conn = get(conn, Routes.user_path(conn, :show, user))
-      assert html_response(conn, 200) =~ "some updated location"
+      assert html_response(conn, 200) =~ "some updated name"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

@@ -5,8 +5,8 @@ defmodule PeopleWeb.UserController do
   alias People.Users.User
 
   def index(conn, _params) do
-    user = Users.list_user()
-    render(conn, "index.html", user: user)
+    users = Users.list_user()
+    render(conn, "index.html", users: users)
   end
 
   def new(conn, _params) do
