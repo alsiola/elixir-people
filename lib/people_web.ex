@@ -22,7 +22,6 @@ defmodule PeopleWeb do
       use Phoenix.Controller, namespace: PeopleWeb
 
       import Plug.Conn
-      import PeopleWeb.Gettext
       alias PeopleWeb.Router.Helpers, as: Routes
     end
   end
@@ -40,7 +39,6 @@ defmodule PeopleWeb do
       use Phoenix.HTML
 
       import PeopleWeb.ErrorHelpers
-      import PeopleWeb.Gettext
       alias PeopleWeb.Router.Helpers, as: Routes
     end
   end
@@ -56,7 +54,6 @@ defmodule PeopleWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import PeopleWeb.Gettext
     end
   end
 
