@@ -3,5 +3,5 @@
 <span><%= link "Add a user", to: Routes.user_path(@conn, :new), class: "btn" %></span>
 
 <%= for user <- @users do %>
-    <%= render(PeopleWeb.SharedView, "user.html", user: user, conn: @conn) %>
+    <%= render(PeopleWeb.UserView, "user.html", user: user, conn: @conn) %>
 <% end %>
