@@ -1,6 +1,4 @@
 defmodule People.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
@@ -12,12 +10,8 @@ defmodule People.Application do
       People.Repo,
       # Start the endpoint when the application starts
       PeopleWeb.Endpoint
-      # Starts a worker by calling: People.Worker.start_link(arg)
-      # {People.Worker, arg},
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: People.Supervisor]
     Supervisor.start_link(children, opts)
   end
