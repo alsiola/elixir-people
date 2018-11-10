@@ -9,16 +9,22 @@ defmodule People.UsersTest do
     @valid_attrs %{
       location: "some location",
       name: "some name",
-      photo: "some photo",
+      photo: "http://photo",
       title: "some title"
     }
     @update_attrs %{
       location: "some updated location",
       name: "some updated name",
-      photo: "some updated photo",
+      photo: "http://updated_photo",
       title: "some updated title"
     }
     @invalid_attrs %{location: nil, name: nil, photo: nil, title: nil}
+    @invalid_photo_attrs %{
+      location: "some location",
+      name: "some name",
+      photo: "some photo",
+      title: "some title"
+    }
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -43,7 +49,7 @@ defmodule People.UsersTest do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
       assert user.location == "some location"
       assert user.name == "some name"
-      assert user.photo == "some photo"
+      assert user.photo == "http://photo"
       assert user.title == "some title"
     end
 
@@ -51,18 +57,28 @@ defmodule People.UsersTest do
       assert {:error, %Ecto.Changeset{}} = Users.create_user(@invalid_attrs)
     end
 
+    test "create_user/1 with invalid photo returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Users.create_user(@invalid_photo_attrs)
+    end
+
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
       assert user.location == "some updated location"
       assert user.name == "some updated name"
-      assert user.photo == "some updated photo"
+      assert user.photo == "http://updated_photo"
       assert user.title == "some updated title"
     end
 
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
       assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_attrs)
+      assert user == Users.get_user!(user.id)
+    end
+
+    test "update_user/2 with invalid photo returns error changeset" do
+      user = user_fixture()
+      assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_photo_attrs)
       assert user == Users.get_user!(user.id)
     end
 

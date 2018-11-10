@@ -6,13 +6,13 @@ defmodule PeopleWeb.UserControllerTest do
   @create_attrs %{
     location: "some location",
     name: "some name",
-    photo: "some photo",
+    photo: "http://photo",
     title: "some title"
   }
   @update_attrs %{
     location: "some updated location",
     name: "some updated name",
-    photo: "some updated photo",
+    photo: "http://updated_photo",
     title: "some updated title"
   }
   @invalid_attrs %{location: nil, name: nil, photo: nil, title: nil}

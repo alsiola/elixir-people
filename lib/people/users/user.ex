@@ -16,5 +16,6 @@ defmodule People.Users.User do
     user
     |> cast(attrs, [:name, :location, :title, :photo])
     |> validate_required([:name, :location, :title, :photo])
+    |> validate_format(:photo, ~r/^http[s]?:\/\//, message: "Must begin with http://")
   end
 end
