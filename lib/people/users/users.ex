@@ -38,7 +38,8 @@ defmodule People.Users do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
-  Gets a single user.
+  Gets a single user - does not raise an error on not found,
+  but returns nil
 
   ## Examples
 
@@ -52,7 +53,7 @@ defmodule People.Users do
   def get_user(id), do: Repo.get(User, id)
 
   @doc """
-  Creates a user.
+  Creates a user
 
   ## Examples
 

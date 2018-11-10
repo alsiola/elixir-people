@@ -7,6 +7,12 @@ The application uses the Phoenix framework and its associated dependencies. Addi
     mix deps.get
 ```
 
+There are also NPM dependencies required to compile the statically-served assets, these should be installed with:
+
+```
+    cd assets && npm install
+```
+
 ## Database
 ### PostGres DB Server
 This project uses a PostGres database. For development, a `docker-compose.yml` file is included that will start an instance of PostGres on port 5432, and an instance of Adminer (web-based DB admin tool) on port 5433. The password for these local instances is set to `postgres`.
@@ -26,6 +32,12 @@ The `people_dev` database can be created by running:
 
 ```
     mix ecto.create
+```
+
+Migrations can then be run to create the `users` table:
+
+```
+    mix ecto.migrate
 ```
 
 ### Seeding data
