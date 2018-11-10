@@ -21,6 +21,6 @@ defmodule PeopleWeb.Router do
     get "/create", UserController, :new
     post "/create", UserController, :create
     get "/edit/:id", UserController, :edit
-    post "/edit/:id", UserController, :update
+    put "/edit/:id", UserController, :update
   end
 end
